@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Володька Исак | Портфолио</title>
+<style>
+@font-face{font-family:'MBender';src:url('mbender.ttf') format('ttf');font-weight:400;font-style:normal}
+:root{--f01:#0a0a0a;--f02:rgba(0,0,0,0.7);--f03:#141414;--f04:#3a3a3a;--f05:#e0e0e0;--f06:#888;--f07:#b5a67c;--f08:#3a3a3a;--f09:#000;--f10:rgba(255,255,255,0.1);--f11:rgba(20,20,20,0.8);--f12:0.05;--l1:#c678dd;--l2:#61afef;--l3:#98c379;--l4:#5c6370;--l5:#d19a66;--l6:#e06c75}
+body.svet-tema{--f01:#f0f0f0;--f02:rgba(255,255,255,0.4);--f03:#fff;--f04:#d1d1d1;--f05:#1a1a1a;--f06:#555;--f07:#8c7f5f;--f08:#e0e0e0;--f09:#1a1a1a;--f10:rgba(0,0,0,0.05);--f11:rgba(255,255,255,0.9);--f12:0.02}
+body{background-color:var(--f01);color:var(--f05);font-family:'MBender','Segoe UI',Tahoma,sans-serif;margin:0;padding:0;line-height:1.6;text-transform:uppercase;letter-spacing:1px;transition:background-color .5s ease,color .5s ease;overflow-x:hidden}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://www.transparenttextures.com/patterns/carbon-fibre.png');opacity:var(--f12);pointer-events:none;z-index:10;transition:opacity .5s ease}
+.upravlenie{position:fixed;top:20px;right:20px;z-index:100;display:flex;gap:10px}
+.knopka-upravleniya{background:var(--f11);border:1px solid var(--f04);color:var(--f05);padding:10px 15px;cursor:pointer;font-family:inherit;font-size:.8rem;backdrop-filter:blur(5px);transition:all .3s ease;text-transform:uppercase;font-weight:700}
+.knopka-upravleniya:hover{border-color:var(--f07);color:var(--f07)}
+header{height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:2px solid var(--f04);background:linear-gradient(to bottom,var(--f02),var(--f01)),url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=1350&q=80');background-size:cover;background-position:center;position:relative;overflow:hidden}
+.konteiner-koda{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;perspective:1200px;display:flex;justify-content:flex-start;align-items:center;z-index:1}
+#pole-dlya-koda{font-family:'Courier New',monospace;font-size:1.3rem;white-space:pre;opacity:.25;transform:rotateY(20deg) rotateX(5deg) scale(1.1);filter:blur(.5px);mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);padding-left:220px;user-select:none;text-align:left;height:280px;width:100%;display:block;overflow-y:hidden;scroll-behavior:smooth;transition:opacity 1s ease}
+.l-kw{color:var(--l1);font-weight:700}.l-fn{color:var(--l2)}.l-st{color:var(--l3)}.l-cm{color:var(--l4);font-style:italic}.l-nm{color:var(--l5)}
+h1,.podzagolovok{position:relative;z-index:5}
+h1{font-size:4rem;margin:0;text-shadow:2px 2px 15px rgba(0,0,0,0.5);color:var(--f07);text-align:center}
+.podzagolovok{color:var(--f06);font-size:1.2rem;border-left:3px solid var(--f07);border-right:3px solid var(--f07);padding-left:15px;padding-right:15px;margin-top:10px;background:rgba(0,0,0,0.2)}
+.osnovnoy-konteiner{max-width:1100px;margin:-50px auto 50px;padding:0 20px;position:relative;z-index:20}
+.setka{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.kartochka{background:var(--f03);border:1px solid var(--f04);padding:25px;position:relative;transition:all .4s cubic-bezier(0.25,0.8,0.25,1);cursor:pointer;overflow:hidden}
+.kartochka:hover{border-color:var(--f07);transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.2);background-color:var(--f10)}
+.kartochka.razvernuta{border-color:var(--f07);background-color:var(--f10)}
+.yarlik{display:inline-block;background:var(--f08);color:var(--f09);padding:4px 12px;font-size:.8rem;font-weight:700;margin-bottom:15px;transition:all .4s ease}
+.kartochka:hover .yarlik,.kartochka.razvernuta .yarlik{background-color:var(--f07);color:#fff}
+.kartochka h3{margin-top:0;color:var(--f05);border-bottom:1px solid var(--f04);padding-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.kartochka h3::after{content:'+';font-size:1.2rem;color:var(--f06);transition:transform .3s}
+.kartochka.razvernuta h3::after{transform:rotate(45deg)}
+.kontent-skrit{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease,opacity .5s ease;margin-top:0}
+.kartochka.razvernuta .kontent-skrit{max-height:800px;opacity:1;margin-top:20px;padding-top:10px;border-top:1px dashed var(--f04)}
+.knopka-ssilka{display:block;margin-top:10px;padding:10px;background:rgba(181,166,124,0.1);color:var(--f07);text-decoration:none;border:1px solid var(--f07);text-align:center;font-size:.8rem;transition:.3s}
+.knopka-ssilka:hover{background:var(--f07);color:#fff}
+.zagolovok-sekcii{margin:60px 0 30px;font-size:1.5rem;display:flex;align-items:center;color:var(--f05)}
+.zagolovok-sekcii::after{content:"";flex-grow:1;height:1px;background:var(--f04);margin-left:20px}
+.podsvetka{color:var(--f07)}
+.spisok-proektov{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.element-proekta{background:var(--f03);border:1px solid var(--f04);padding:8px 16px;font-size:.9rem;color:var(--f06)}
+.vazhniy-proekt{border-color:var(--f07);color:var(--f05)}
+footer{text-align:center;padding:60px 40px;color:var(--f06);font-size:.8rem;border-top:1px solid var(--f04);background:var(--f01)}
+@media (max-width:768px){h1{font-size:2.5rem}.setka{grid-template-columns:1fr}#pole-dlya-koda{font-size:.8rem;opacity:.15;padding-left:20px;height:180px}}
+</style>
+</head>
+<body>
+<div class="upravlenie">
+<button class="knopka-upravleniya" id="pereklyuchatel-yazika">EN</button>
+<button class="knopka-upravleniya" id="pereklyuchatel-temi">☀</button>
+</div>
+<header>
+<div class="konteiner-koda"><div id="pole-dlya-koda"></div></div>
+<h1 id="glavniy-zagolovok">&lt;&lt; ВОЛОДЬКА ИСАК &gt;&gt;</h1>
+<div class="podzagolovok" id="glavniy-podzagolovok">Developer & Creator</div>
+</header>
+<div class="osnovnoy-konteiner">
+<div class="zagolovok-sekcii" id="zag-glavnoe">Основная специализация</div>
+<div class="setka">
+<div class="kartochka" onclick="_0x5a1b(this)">
+<div class="yarlik">SOFTWARE</div>
+<h3 data-kluch="kartochka_prog_zag">Программирование</h3>
+<p data-kluch="kartochka_prog_opis">7 лет опыта в программировании на разных языках.</p>
+<p class="podsvetka">LUA, Python, C++, gLua.</p>
+<div class="kontent-skrit">
+<p data-kluch="kartochka_prog_detali">Разработка систем, анимаций в UI, и абсолютно всего чего пожелаете. Примеры работ:</p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3286212870" target="_blank" class="knopka-ssilka">Steam: S.T.A.L.K.E.R SYSTEM</a>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3290678565" target="_blank" class="knopka-ssilka">Steam: Kill Tool</a>
+</div>
+</div>
+<div class="kartochka" onclick="_0x5a1b(this)">
+<div class="yarlik">GAMEDEV</div>
+<h3 data-kluch="kartochka_map_zag">Маппинг & Source</h3>
+<p data-kluch="kartochka_map_opis">Маппинг, настройка хоста, компиляция и оптимизация.</p>
+<div class="kontent-skrit">
+<p data-kluch="kartochka_map_detali">Работа в Hammer Editor. Создание атмосферных локаций для RP проектов или других серверов :) Примеры работ:</p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3591091000" target="_blank" class="knopka-ssilka">Steam: Map RPS (v2)</a>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3156024517" target="_blank" class="knopka-ssilka">Steam: Map RPS (v1)</a>
+</div>
+</div>
+<div class="kartochka" onclick="_0x5a1b(this)">
+<div class="yarlik">3D ART</div>
+<h3 data-kluch="kartochka_art_zag">Blender & Animation</h3>
+<p data-kluch="kartochka_art_opis">Создание, редактирование и анимирование моделей.</p>
+<div class="kontent-skrit">
+<p data-kluch="kartochka_art_detali">Риггинг персонажей, создание пропов, анимация, их редактирование и так далее... Примеры работ:</p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3541185224" target="_blank" class="knopka-ssilka">Steam: Reborn Model</a>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3533494977" target="_blank" class="knopka-ssilka">Steam: WW2 Model</a>
+</div>
+</div>
+</div>
+<div class="zagolovok-sekcii" id="zag-naviki">Дополнительные навыки</div>
+<div class="setka">
+<div class="kartochka" onclick="_0x5a1b(this)">
+<div class="yarlik">WEB</div>
+<h3 data-kluch="kartochka_web_zag">Web Development</h3>
+<p data-kluch="kartochka_web_opis">Создание сайтов и интерфейса. Дизайнер в Figma.</p>
+<div class="kontent-skrit">
+<p data-kluch="kartochka_web_detali">Думаю, очевидно - я это умею, ведь вы читаете об этом на моём личном сайте (Спасибо!) <3 Так же есть сайт для проекта RPS:</p>
+<a href="https://rps-revolution.framer.website/" target="_blank" class="knopka-ssilka">Site: RPSᴿᵉᵛᵒˡᵘᵗⁱᵒⁿ</a>
+</div>
+</div>
+<div class="kartochka" onclick="_0x5a1b(this)">
+<div class="yarlik">BOTS</div>
+<h3 data-kluch="kartochka_bot_zag">Discord Bots</h3>
+<p data-kluch="kartochka_bot_opis">Разработка ботов Discord для разных целей.</p>
+<div class="kontent-skrit">
+<p data-kluch="kartochka_bot_detali">Пример бота вы можете увидеть в Discord'е RPS - бот логирует все действия на сервере, "мониторит" его для отображения онлайна и имеет несколько забавных команд:</p>
+<a href="https://discord.gg/RH4RweEjzA" target="_blank" class="knopka-ssilka">Discord: RPSᴿᵉᵛᵒˡᵘᵗⁱᵒⁿ</a>
+</div>
+</div>
+</div>
+<div class="zagolovok-sekcii" id="zag-proekti">История проектов</div>
+<div class="kartochka" style="cursor:default">
+<div class="yarlik">EXPERIENCE</div>
+<h3 data-kluch="proekt_istoriya_zag">Участие и Разработка</h3>
+<p data-kluch="proekt_istoriya_opis">Список серверов и проектов, в которых я принимал участие как разработчик, маппер или моделлер (а иногда и все вместе).</p>
+<div style="margin-top:20px">
+<p style="color:var(--f07);font-weight:700;margin-bottom:10px">/// OWN PROJECT</p>
+<a href="https://rps-revolution.framer.website/" target="_blank" style="text-decoration:none">
+<div class="element-proekta vazhniy-proekt" style="display:block;text-align:center;border-width:2px;margin-bottom:20px;transition:.3s">RPS - REVOLUTION</div>
+</a>
+<p style="color:var(--f06);font-size:.8rem;margin-bottom:10px">/// OIHER DEV</p>
+<div class="spisok-proektov">
+<div class="element-proekta">HellGate - Stalker RP</div><div class="element-proekta">EP Stalker 2</div><div class="element-proekta">Danger Zone</div><div class="element-proekta">Metro 2030 Reborn</div><div class="element-proekta">Metro 2033 New Life</div><div class="element-proekta">PM - Закат Миронтела</div><div class="element-proekta">NYX Team (GSims)</div><div class="element-proekta">Kursk Project</div><div class="element-proekta">IVK • Great Age of Swords</div>
+</div>
+</div>
+</div>
+<div class="zagolovok-sekcii" id="zag-kontakti">Связь со мной</div>
+<div class="setka">
+<div class="kartochka" style="cursor:default;width:100%">
+<div class="yarlik">SOCIAL</div>
+<h3 data-kluch="kontakti_zag">Контакты & Ссылки</h3>
+<p>Discord: <span class="podsvetka">volodya.isak</span></p>
+<a href="https://steamcommunity.com/id/volodua_isak/" target="_blank" class="knopka-ssilka" data-kluch="steam_knopka">Посетите мой Steam Профиль!</a>
+</div>
+</div>
+</div>
+<footer data-kluch="footer_tekst">2026 | volodya ISAK | DANIEL K</footer>
+<script>
+(function(){const _0x1a2b="\x6c\x6f\x63\x61\x6c\x20\x50\x4c\x55\x47\x49\x4e\x20\x3d\x20\x50\x4c\x55\x47\x49\x4e\x0a\x6c\x6f\x63\x61\x6c\x20\x66\x75\x6c\x6c\x5f\x68\x70\x20\x3d\x20\x69\x78\x2e\x75\x74\x69\x6c\x2e\x47\x65\x74\x4d\x61\x74\x65\x72\x69\x61\x6c\x28\x22\x6e\x65\x77\x5f\x72\x70\x73\x5f\x68\x75\x64\x2f\x66\x75\x6c\x6c\x5f\x68\x70\x2e\x70\x6e\x67\x22\x28\x0a\x6c\x6f\x63\x61\x6c\x20\x66\x75\x6c\x6c\x5f\x73\x74\x61\x6d\x20\x3d\x20\x69\x78\x2e\x75\x74\x69\x6c\x2e\x47\x65\x74\x4d\x61\x74\x65\x72\x69\x61\x6c\x28\x22\x6e\x65\x77\x5f\x72\x70\x73\x5f\x68\x75\x64\x2f\x66\x75\x6c\x6c\x5f\x73\x74\x61\x6d\x2e\x70\x6e\x67\x22\x29\x0a\x0a\x6c\x6f\x63\x61\x6c\x20\x42\x41\x52\x5f\x57\x49\x44\x54\x48\x20\x3d\x20\x32\x31\x32\x0a\x6c\x6f\x63\x61\x6c\x20\x42\x41\x52\x5f\x48\x45\x49\x47\x48\x54\x20\x3d\x20\x32\x31\x0a\x6c\x6f\x63\x61\x6c\x20\x63\x75\x72\x72\x65\x6e\x74\x48\x65\x61\x6c\x74\x68\x20\x3d\x20\x30\x0a\x6c\x6f\x63\x61\x6c\x20\x74\x61\x72\x67\x65\x74\x48\x65\x61\x6c\x74\x68\x20\x3d\x20\x30\x0a\x0a\x6c\x6f\x63\x61\x6c\x20\x66\x75\x6e\x63\x74\x69\x6f\x6e\x20\x55\x70\x64\x61\x74\x65\x48\x55\x44\x44\x61\x74\x61\x28\x29\x0a\x20\x20\x20\x20\x6c\x6f\x63\x61\x6c\x20\x70\x6c\x79\x20\x3d\x20\x4c\x6f\x63\x61\x6c\x50\x6c\x61\x79\x65\x72\x28\x29\x0a\x20\x20\x20\x20\x69\x66\x20\x6e\x6f\x74\x20\x49\x73\x56\x61\x6c\x69\x64\x28\x70\x6c\x79\x29\x20\x74\x68\x65\x6e\x20\x72\x65\x74\x75\x72\x6e\x20\x65\x6e\x64\x0a\x0a\x20\x20\x20\x20\x6c\x6f\x63\x61\x6c\x20\x6e\x65\x77\x48\x65\x61\x6c\x74\x68\x20\x3d\x20\x6d\x61\x74\x68\x2e\x43\x6c\x61\x6d\x70\x28\x70\x6c\x79\x3a\x48\x65\x61\x6c\x74\x68\x28\x29\x20\x2f\x20\x70\x6c\x79\x3a\x47\x65\x74\x4d\x61\x78\x48\x65\x61\x6c\x74\x68\x28\x29\x2c\x20\x30\x2c\x20\x31\x29\x0a\x20\x20\x20\x20\x74\x61\x72\x67\x65\x74\x48\x65\x61\x6c\x74\x68\x20\x3d\x20\x6e\x65\x77\x48\x65\x61\x6c\x74\x68\x0a\x65\x6e\x64\x0a\x0a\x66\x75\x6e\x63\x74\x69\x6f\x6e\x20\x50\x4c\x55\x47\x49\x4e\x3a\x48\x55\x44\x50\x61\x69\x6e\x74\x28\x29\x0a\x20\x20\x20\x20\x6c\x6f\x63\x61\x6c\x20\x73\x63\x72\x77\x2c\x20\x73\x63\x72\x68\x20\x3d\x20\x53\x63\x72\x57\x28\x29\x2c\x20\x53\x63\x72\x48\x28\x29\x0a\x20\x20\x20\x20\x63\x75\x72\x72\x65\x6e\x74\x48\x65\x61\x6c\x74\x68\x20\x3d\x20\x4c\x65\x72\x70\x28\x46\x72\x61\x6d\x65\x54\x69\x6d\x65\x28\x29\x20\x2a\x20\x38\x2c\x20\x63\x75\x72\x72\x65\x6e\x74\x48\x65\x61\x6c\x74\x68\x2c\x20\x74\x61\x72\x67\x65\x74\x48\x65\x61\x6c\x74\x68\x29\x0a\x0a\x20\x20\x20\x20\x73\x75\x72\x66\x61\x63\x65\x2e\x53\x65\x74\x44\x72\x61\x77\x43\x6f\x6c\x6f\x72\x28\x32\x35\x35\x2c\x20\x32\x35\x35\x2c\x20\x32\x35\x35\x2c\x20\x32\x35\x35\x29\x0a\x20\x20\x20\x20\x73\x75\x72\x66\x61\x63\x65\x2e\x53\x65\x74\x4d\x61\x74\x65\x72\x69\x61\x6c\x28\x66\x75\x6c\x6c\x5f\x68\x70\x29\x0a\x20\x20\x20\x20\x72\x65\x6e\x64\x65\x72\x2e\x53\x65\x74\x53\x63\x69\x73\x73\x6f\x72\x52\x65\x63\x74\x28\x30\x2c\x20\x30\x2c\x20\x42\x41\x52\x5f\x57\x49\x44\x54\x48\x20\x2a\x20\x63\x75\x72\x72\x65\x6e\x74\x48\x65\x61\x6c\x74\x68\x2c\x20\x73\x63\x72\x68\x2c\x20\x74\x72\x75\x65\x29\x0a\x20\x20\x20\x20\x73\x75\x72\x66\x61\x63\x65\x2e\x44\x72\x61\x77\x54\x65\x78\x74\x75\x72\x65\x64\x52\x65\x63\x74\x28\x31\x30\x30\x2c\x20\x31\x30\x30\x2c\x20\x42\x41\x52\x5f\x57\x49\x44\x54\x48\x20\x2c\x20\x42\x41\x52\x5f\x48\x45\x49\x47\x48\x54\x29\x0a\x20\x20\x20\x20\x72\x65\x6e\x64\x65\x72\x2e\x53\x65\x74\x53\x63\x69\x73\x73\x6f\x72\x52\x65\x63\x74\x28\x30\x2c\x20\x30\x2c\x20\x30\x2c\x20\x30\x2c\x20\x66\x61\x6c\x73\x65\x29\x0e\x6e\x64\x0a\x0a\x68\x6f\x6f\x6b\x2e\x41\x64\x64\x28\x22\x54\x68\x69\x6e\x6b\x22\x2c\x20\x22\x55\x70\x64\x61\x74\x65\x48\x55\x44\x44\x61\x74\x61\x54\x68\x69\x6e\x6b\x22\x2c\x20\x55\x70\x64\x61\x74\x65\x48\x55\x44\x44\x61\x74\x61\x29";function _0x2c(_0x1){return _0x1.replace(/(--\[\[[\s\S]*?\]\]|--.*)/g,'<span class="l-cm">$1</span>').replace(/"(.*?)"/g,'<span class="l-st">"$1"</span>').replace(/\b(local|function|if|then|else|end|return|nil|not|and|or|for|in|pairs|ipairs|do)\b/g,'<span class="l-kw">$1</span>').replace(/\b(UpdateHUDData|HUDPaint|Lerp|IsValid|LocalPlayer|GetMaterial|Clamp|SetDrawColor|DrawTexturedRect|SetScissorRect|Add|ScrW|ScrH)\b/g,'<span class="l-fn">$1</span>').replace(/\b(\d+)\b/g,'<span class="l-nm">$1</span>')}const _0x3e=document.getElementById('pole-dlya-koda');let _0x4f=0,_0x5b=true;function _0x6a(){if(!_0x5b)return;if(_0x4f<_0x1a2b.length){if(_0x1a2b.substring(_0x4f,_0x4f+2)==="--"){let _0x7c=_0x1a2b.indexOf('\n',_0x4f);_0x4f=(_0x7c===-1)?_0x1a2b.length:_0x7c}else{_0x4f++}_0x3e.innerHTML=_0x2c(_0x1a2b.substring(0,_0x4f));_0x3e.scrollTop=_0x3e.scrollHeight;let _0x8d=_0x1a2b[_0x4f-1],_0x9e=30+Math.random()*40;if(_0x8d==='\n')_0x9e=150;if(_0x8d===' ')_0x9e=10;setTimeout(_0x6a,_0x9e)}else{setTimeout(()=>{_0x3e.style.opacity="0";setTimeout(()=>{_0x4f=0;_0x3e.innerHTML="";_0x3e.scrollTop=0;_0x3e.style.opacity="0.25";_0x6a()},1000)},5000)}}const _0x1c2d={ru:{title:"<< ВОЛОДЬКА ИСАК >>",subtitle:"Developer & Creator",t_main:"Основная специализация",t_skills:"Дополнительные навыки",t_proj:"История проектов",t_contacts:"Связь со мной",c_prog_t:"Программирование",c_prog_d:"7 лет опыта в программировании на разных языках.",c_prog_det:"Разработка систем, анимаций в UI, и абсолютно всего чего пожелаете. Примеры работ:",c_map_t:"Маппинг & Source",c_map_d:"Маппинг, настройка хоста, компиляция и оптимизация.",c_map_det:"Работа в Hammer Editor. Создание атмосферных локаций для RP проектов или других серверов :) Примеры работ:",c_art_t:"Blender & Animation",c_art_d:"Создание, редактирование и анимирование моделей.",c_art_det:"Риггинг персонажей, создание пропов, анимация, их редактирование и так далее... Примеры работ:",c_web_t:"Web Development",c_web_d:"Создание сайтов и интерфейса. Дизайнер в Figma.",c_web_det:"Думаю, очевидно - я это умею, ведь вы читаете об этом на моём личном сайте (Спасибо!) <3 Так же есть сайт для проекта RPS:",c_bot_t:"Discord Bots",c_bot_d:"Разработка ботов Discord для разных целей.",c_bot_det:"Пример бота вы можете увидеть в Discord'е RPS - бот логирует все действия на сервере, 'мониторит' его для отображения онлайна и имеет несколько забавных команд:",p_hist_t:"Участие и Разработка",p_hist_d:"Список серверов и проектов, в которых я принимал участие как разработчик, маппер или моделлер (а иногда и все вместе).",contacts_h:"Контакты & Ссылки",steam_b:"Посетите мой Steam Профиль!",end_t:"2026 | ВОЛОДЬКА ИСАК | ДАНИИЛ К"},en:{title:"<< volodya ISAK >>",subtitle:"Developer & Creator",t_main:"Core Specialization",t_skills:"Additional Skills",t_proj:"Project History",t_contacts:"Contact Me",c_prog_t:"Programming",c_prog_d:"7 years of experience in various languages.",c_prog_det:"Development of systems, animations in UI, and absolutely anything you want. Examples of work:",c_map_t:"Mapping & Source",c_map_d:"Mapping, hosting, compilation and optimization.",c_map_det:"Working in Hammer Editor. Creating atmospheric locations for RP projects or other servers :) Examples of work:",c_art_t:"Blender & Animation",c_art_d:"Creating, editing, and animating models.",c_art_det:"Rigging characters, creating props, animating, editing them, and so on... Examples of work:",c_web_t:"Web Development",c_web_d:"Website creation. Figma Designer.",c_web_det:"I think it's obvious that I can do this, because you read about it on my personal website (Thank you!) <3 There is also a website for the RPS project:",c_bot_t:"Discord Bots",c_bot_d:"Development of Discord bots for various purposes.",c_bot_det:"You can see an example of a bot in Discord's RPS - the bot logs all actions on the server, monitor it for online display and has some funny commands:",p_hist_t:"Contribution & Development",p_hist_d:"A list of servers and projects in which I participated as a developer, mapper, or modeler (and sometimes both).",contacts_h:"Contacts & Links",steam_b:"Visit my Steam Profile!",end_t:"2026 | volodya ISAK | DANIEL K"}};let _0x3f1a='ru';window._0x5a1b=function(_0x1){if(_0x1.style.cursor==='default')return;_0x1.classList.toggle('razvernuta')};const _0x2d3e=document.getElementById('pereklyuchatel-yazika'),_0x4f5a=document.getElementById('pereklyuchatel-temi');_0x2d3e.addEventListener('click',()=>{_0x3f1a=_0x3f1a==='ru'?'en':'ru';_0x2d3e.textContent=_0x3f1a==='ru'?'EN':'RU';_0x9b8c()});_0x4f5a.addEventListener('click',()=>{document.body.classList.toggle('svet-tema');_0x4f5a.textContent=document.body.classList.contains('svet-tema')?'☾':'☀'});function _0x9b8c(){const _0x2=_0x1c2d[_0x3f1a];document.getElementById('glavniy-zagolovok').textContent=_0x2.title;document.getElementById('glavniy-podzagolovok').textContent=_0x2.subtitle;document.getElementById('zag-glavnoe').textContent=_0x2.t_main;document.getElementById('zag-naviki').textContent=_0x2.t_skills;document.getElementById('zag-proekti').textContent=_0x2.t_proj;document.getElementById('zag-kontakti').textContent=_0x2.t_contacts;const _0x3=(_0x1,_0x2)=>{const _0x3=document.querySelector(`[data-kluch="${_0x1}"]`);if(_0x3)_0x3.textContent=_0x2};_0x3('kartochka_prog_zag',_0x2.c_prog_t);_0x3('kartochka_prog_opis',_0x2.c_prog_d);_0x3('kartochka_prog_detali',_0x2.c_prog_det);_0x3('kartochka_map_zag',_0x2.c_map_t);_0x3('kartochka_map_opis',_0x2.c_map_d);_0x3('kartochka_map_detali',_0x2.c_map_det);_0x3('kartochka_art_zag',_0x2.c_art_t);_0x3('kartochka_art_opis',_0x2.c_art_d);_0x3('kartochka_art_detali',_0x2.c_art_det);_0x3('kartochka_web_zag',_0x2.c_web_t);_0x3('kartochka_web_opis',_0x2.c_web_d);_0x3('kartochka_web_detali',_0x2.c_web_det);_0x3('kartochka_bot_zag',_0x2.c_bot_t);_0x3('kartochka_bot_opis',_0x2.c_bot_d);_0x3('kartochka_bot_detali',_0x2.c_bot_det);_0x3('proekt_istoriya_zag',_0x2.p_hist_t);_0x3('proekt_istoriya_opis',_0x2.p_hist_d);_0x3('kontakti_zag',_0x2.contacts_h);_0x3('steam_knopka',_0x2.steam_b);_0x3('footer_tekst',_0x2.end_t)}window.onload=()=>{_0x6a();_0x9b8c()}})();
+</script>
+</body>
+</html>
